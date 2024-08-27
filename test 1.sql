@@ -1,6 +1,11 @@
 SELECT
-    tgl_kunjungan
+    poliklinik,
+    COUNT(tgl_kunjungan) AS jumlah_kunjungan
 FROM
-    pendaftaran
+    poliklinik
+JOIN pendaftaran ON poliklinik.id = pendaftaran.poliklinik_id
 WHERE
-    poliklinik_id = 1
+    tgl_kunjungan LIKE '%23%' OR '%24%'
+GROUP BY
+    poliklinik
+DESC
